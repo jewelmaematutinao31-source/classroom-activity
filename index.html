@@ -25,9 +25,11 @@ body {
     padding: 25px 15px 50px;
 }
 
+/* HEADER */
+
 .header {
     text-align: center;
-    background: white;
+    background: url("background.jpg") center center / cover no-repeat;
     padding: 28px;
     border-radius: 22px;
     margin-bottom: 25px;
@@ -45,6 +47,8 @@ h1 {
     line-height: 1.6;
     color: #475569;
 }
+
+/* STUDENT INFO */
 
 .student-info,
 .questions {
@@ -68,6 +72,8 @@ h1 {
     border-radius: 12px;
     font-size: 16px;
 }
+
+/* CLASSROOM IMAGES */
 
 .classrooms {
     display: grid;
@@ -112,6 +118,8 @@ h1 {
     font-size: 14px;
 }
 
+/* QUESTIONS */
+
 .question {
     margin-bottom: 28px;
 }
@@ -150,6 +158,8 @@ textarea {
     resize: vertical;
 }
 
+/* BUTTON */
+
 button {
     width: 100%;
     padding: 16px;
@@ -167,6 +177,8 @@ button:hover {
     background: #125ea8;
     transform: translateY(-2px);
 }
+
+/* SUCCESS MESSAGE */
 
 #result {
     display: none;
@@ -218,6 +230,8 @@ button:hover {
     cursor: pointer;
 }
 
+/* MOBILE */
+
 @media (max-width: 700px) {
 
     .classrooms {
@@ -242,6 +256,8 @@ button:hover {
 <body>
 
 <div class="container">
+
+    <!-- HEADER -->
 
     <div class="header">
 
@@ -328,28 +344,21 @@ button:hover {
             </h3>
 
             <label>
-
                 <input
                     type="radio"
                     name="q1"
                     value="Learning Environment A"
                 >
-
                 Learning Environment A
-
             </label>
 
-
             <label>
-
                 <input
                     type="radio"
                     name="q1"
                     value="Learning Environment B"
                 >
-
                 Learning Environment B
-
             </label>
 
         </div>
@@ -361,56 +370,40 @@ button:hover {
                 2. What things should a good classroom have?
             </h3>
 
-
             <label>
-
                 <input
                     type="checkbox"
                     name="q2"
                     value="Clean and organized"
                 >
-
                 A clean and organized environment
-
             </label>
 
-
             <label>
-
                 <input
                     type="checkbox"
                     name="q2"
                     value="Comfortable"
                 >
-
                 Comfortable places for students to learn
-
             </label>
 
-
             <label>
-
                 <input
                     type="checkbox"
                     name="q2"
                     value="Useful learning materials"
                 >
-
                 Useful learning materials
-
             </label>
 
-
             <label>
-
                 <input
                     type="checkbox"
                     name="q2"
                     value="Safe"
                 >
-
                 A safe environment
-
             </label>
 
         </div>
