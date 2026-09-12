@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ideal or Not-So-Ideal Classroom?</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: #222;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 25px 15px 50px;
+    }
+
+    .header {
+        text-align: center;
+        background: white;
+        padding: 25px;
+        border-radius: 18px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+        margin: 0 0 10px;
+        color: #1d4ed8;
+    }
+
+    .instructions {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .classrooms {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .classroom-card {
+        background: white;
+        border-radius: 18px;
+        padding: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .classroom-card h2 {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .classroom-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+    }
+
+    .questions {
+        background: white;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .question {
+        margin-bottom: 25px;
+    }
+
+    .question h3 {
+        margin-bottom: 12px;
+    }
+
+    label {
+        display: block;
+        margin: 9px 0;
+        padding: 10px;
+        background: #f1f5f9;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    label:hover {
+        background: #e0e7ff;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        font-size: 16px;
+        resize: vertical;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        background: #2563eb;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    #result {
+        display: none;
+        margin-top: 25px;
+        padding: 20px;
+        background: #ecfdf5;
+        border: 2px solid #10b981;
+        border-radius: 15px;
+    }
+
+    .score {
+        font-size: 22px;
+        font-weight: bold;
+        color: #047857;
+    }
+
+    @media (max-width: 700px) {
+        .classrooms {
+            grid-template-columns: 1fr;
+        }
+
+        .classroom-card img {
+            height: auto;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🏫 Ideal or Not-So-Ideal Classroom?</h1>
+
+        <div class="instructions">
+            Look carefully at the two classroom pictures.
+            <br>
+            Compare them and answer the questions below.
+        </div>
+    </div>
+
+    <div class="classrooms">
+
+        <div class="classroom-card">
+            <h2>✅ Ideal Classroom</h2>
+
+            <img src="ideal.jpg.jpg" alt="Ideal classroom">
+        </div>
+
+        <div class="classroom-card">
+            <h2>❌ Not-So-Ideal Classroom</h2>
+
+            <img src="not%20ideal.jpg.jpg" alt="Not-so-ideal classroom">
+        </div>
+
+    </div>
+
+    <div class="questions">
+
+        <div class="question">
+            <h3>1. Which classroom looks more suitable for learning?</h3>
+
+            <label>
+                <input type="radio" name="q1" value="ideal">
+                The ideal classroom
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="notideal">
+                The not-so-ideal classroom
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>2. What things should a good classroom have?</h3>
+
+            <label>
+                <input type="checkbox" name="q2" value="clean">
+                A clean and organized environment
+            </label>
+
+            <label>
+                <input type="checkbox" name="q2" value="comfortable">
+                Comfortable places for students to learn
+            </label>
+
+            <label>
+                <input type="checkbox" name="q2" value="materials">
+                Useful learning materials
+            </label>
+
+            <label>
+                <input type="checkbox" name="q2" value="safe">
+                A safe environment
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>3. What problems can you notice in the not-so-ideal classroom?</h3>
+
+            <textarea
+                id="q3"
+                placeholder="Write your answer here..."></textarea>
+        </div>
+
+        <div class="question">
+            <h3>4. What would you change to improve the classroom?</h3>
+
+            <textarea
+                id="q4"
+                placeholder="Write your ideas here..."></textarea>
+        </div>
+
+        <div class="question">
+            <h3>5. Which classroom would you prefer to study in? Why?</h3>
+
+            <textarea
+                id="q5"
+                placeholder="Explain your answer..."></textarea>
+        </div>
+
+        <button onclick="submitActivity()">
+            Submit My Answers
+        </button>
+
+        <div id="result">
+            <div class="score" id="score"></div>
+
+            <p>
+                Thank you for completing the activity! 🎉
+            </p>
+
+            <p>
+                Your activity has been completed.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function submitActivity() {
+
+    const q1 = document.querySelector('input[name="q1"]:checked');
+
+    const q2 = document.querySelectorAll('input[name="q2"]:checked');
+
+    const q3 = document.getElementById("q3").value.trim();
+
+    const q4 = document.getElementById("q4").value.trim();
+
+    const q5 = document.getElementById("q5").value.trim();
+
+
+    if (!q1) {
+        alert("Please answer Question 1.");
+        return;
+    }
+
+    if (q2.length === 0) {
+        alert("Please answer Question 2.");
+        return;
+    }
+
+    if (!q3 || !q4 || !q5) {
+        alert("Please complete all written questions.");
+        return;
+    }
+
+
+    let score = 0;
+
+    if (q1.value === "ideal") {
+        score++;
+    }
+
+    if (q2.length >= 3) {
+        score++;
+    }
+
+    if (q3.length >= 10) {
+        score++;
+    }
+
+    if (q4.length >= 10) {
+        score++;
+    }
+
+    if (q5.length >= 10) {
+        score++;
+    }
+
+
+    const answerData = {
+        date: new Date().toLocaleString(),
+        question1: q1.value,
+        question2: Array.from(q2).map(x => x.value),
+        question3: q3,
+        question4: q4,
+        question5: q5,
+        score: score + "/5"
+    };
+
+
+    localStorage.setItem(
+        "classroomActivityResponse",
+        JSON.stringify(answerData)
+    );
+
+
+    document.getElementById("score").textContent =
+        "Activity completed! Score: " + score + "/5";
+
+
+    document.getElementById("result").style.display = "block";
+
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
+
+</script>
+
+</body>
+</html>
