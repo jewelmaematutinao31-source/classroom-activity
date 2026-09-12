@@ -136,12 +136,12 @@
         background: #ecfdf5;
         border: 2px solid #10b981;
         border-radius: 15px;
+        text-align: center;
     }
 
-    .score {
-        font-size: 22px;
-        font-weight: bold;
+    #result h2 {
         color: #047857;
+        margin-top: 0;
     }
 
     @media (max-width: 700px) {
@@ -259,14 +259,14 @@
         </button>
 
         <div id="result">
-            <div class="score" id="score"></div>
+            <h2>🎉 Thank You!</h2>
 
             <p>
-                Thank you for completing the activity! 🎉
+                You have completed the activity.
             </p>
 
             <p>
-                Your activity has been completed.
+                Thank you for sharing your ideas! 😊
             </p>
         </div>
 
@@ -305,37 +305,13 @@ function submitActivity() {
     }
 
 
-    let score = 0;
-
-    if (q1.value === "ideal") {
-        score++;
-    }
-
-    if (q2.length >= 3) {
-        score++;
-    }
-
-    if (q3.length >= 10) {
-        score++;
-    }
-
-    if (q4.length >= 10) {
-        score++;
-    }
-
-    if (q5.length >= 10) {
-        score++;
-    }
-
-
     const answerData = {
         date: new Date().toLocaleString(),
         question1: q1.value,
         question2: Array.from(q2).map(x => x.value),
         question3: q3,
         question4: q4,
-        question5: q5,
-        score: score + "/5"
+        question5: q5
     };
 
 
@@ -343,10 +319,6 @@ function submitActivity() {
         "classroomActivityResponse",
         JSON.stringify(answerData)
     );
-
-
-    document.getElementById("score").textContent =
-        "Activity completed! Score: " + score + "/5";
 
 
     document.getElementById("result").style.display = "block";
