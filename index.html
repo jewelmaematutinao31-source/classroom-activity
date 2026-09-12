@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ideal or Not-So-Ideal Classroom?</title>
+<title>Learning Environment</title>
 
 <style>
     * {
@@ -41,6 +42,32 @@
     .instructions {
         font-size: 17px;
         line-height: 1.6;
+    }
+
+    .student-info {
+        background: white;
+        padding: 25px;
+        border-radius: 18px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .student-info label {
+        display: block;
+        background: none;
+        padding: 0;
+        margin: 0 0 8px;
+        font-weight: bold;
+        cursor: default;
+    }
+
+    .student-info input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
     }
 
     .classrooms {
@@ -85,7 +112,7 @@
         margin-bottom: 12px;
     }
 
-    label {
+    .question label {
         display: block;
         margin: 9px 0;
         padding: 10px;
@@ -94,7 +121,7 @@
         cursor: pointer;
     }
 
-    label:hover {
+    .question label:hover {
         background: #e0e7ff;
     }
 
@@ -165,25 +192,48 @@
 <div class="container">
 
     <div class="header">
-        <h1>🏫 Ideal or Not-So-Ideal Classroom?</h1>
+        <h1>🏫 Learning Environment</h1>
 
         <div class="instructions">
-            Look carefully at the two classroom pictures.
+            Look carefully at the two learning environments.
             <br>
             Compare them and answer the questions below.
         </div>
     </div>
 
+    <!-- STUDENT INFORMATION -->
+    <div class="student-info">
+
+        <label for="studentName">Student Name *</label>
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Enter your name"
+        >
+
+        <label for="studentEmail">Email (optional)</label>
+
+        <input
+            type="email"
+            id="studentEmail"
+            placeholder="Enter your email address"
+        >
+
+    </div>
+
     <div class="classrooms">
 
         <div class="classroom-card">
-            <h2>✅ Ideal Classroom</h2>
-            <img src="idea.jpg.jpg" alt="Ideal classroom">
+            <h2>🅰️ Learning Environment A</h2>
+
+            <img src="idea.jpg.jpg" alt="Learning Environment A">
         </div>
 
         <div class="classroom-card">
-            <h2>❌ Not-So-Ideal Classroom</h2>
-            <img src="not%20idea.jpg.jpg" alt="Not-so-ideal classroom">
+            <h2>🅱️ Learning Environment B</h2>
+
+            <img src="not%20idea.jpg.jpg" alt="Learning Environment B">
         </div>
 
     </div>
@@ -191,16 +241,16 @@
     <div class="questions">
 
         <div class="question">
-            <h3>1. Which classroom looks more suitable for learning?</h3>
+            <h3>1. Which learning environment looks more suitable for learning?</h3>
 
             <label>
-                <input type="radio" name="q1" value="ideal">
-                The ideal classroom
+                <input type="radio" name="q1" value="Learning Environment A">
+                Learning Environment A
             </label>
 
             <label>
-                <input type="radio" name="q1" value="notideal">
-                The not-so-ideal classroom
+                <input type="radio" name="q1" value="Learning Environment B">
+                Learning Environment B
             </label>
         </div>
 
@@ -208,42 +258,48 @@
             <h3>2. What things should a good classroom have?</h3>
 
             <label>
-                <input type="checkbox" name="q2" value="clean">
+                <input type="checkbox" name="q2" value="Clean and organized">
                 A clean and organized environment
             </label>
 
             <label>
-                <input type="checkbox" name="q2" value="comfortable">
+                <input type="checkbox" name="q2" value="Comfortable">
                 Comfortable places for students to learn
             </label>
 
             <label>
-                <input type="checkbox" name="q2" value="materials">
+                <input type="checkbox" name="q2" value="Useful learning materials">
                 Useful learning materials
             </label>
 
             <label>
-                <input type="checkbox" name="q2" value="safe">
+                <input type="checkbox" name="q2" value="Safe">
                 A safe environment
             </label>
         </div>
 
         <div class="question">
-            <h3>3. What problems can you notice in the not-so-ideal classroom?</h3>
+            <h3>3. What problems can you notice in Learning Environment B?</h3>
 
-            <textarea id="q3" placeholder="Write your answer here..."></textarea>
+            <textarea
+                id="q3"
+                placeholder="Write your answer here..."></textarea>
         </div>
 
         <div class="question">
-            <h3>4. What would you change to improve the classroom?</h3>
+            <h3>4. What would you change to improve the learning environment?</h3>
 
-            <textarea id="q4" placeholder="Write your ideas here..."></textarea>
+            <textarea
+                id="q4"
+                placeholder="Write your ideas here..."></textarea>
         </div>
 
         <div class="question">
-            <h3>5. Which classroom would you prefer to study in? Why?</h3>
+            <h3>5. Which learning environment would you prefer to study in? Why?</h3>
 
-            <textarea id="q5" placeholder="Explain your answer..."></textarea>
+            <textarea
+                id="q5"
+                placeholder="Explain your answer..."></textarea>
         </div>
 
         <button onclick="submitActivity()">
@@ -269,16 +325,36 @@
 <script>
 
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+
 const ACCESS_KEY = "a2681b63-6a82-45fd-83d8-de29fbfc298e";
 
 function submitActivity() {
 
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelectorAll('input[name="q2"]:checked');
+    const studentName =
+        document.getElementById("studentName").value.trim();
 
-    const q3 = document.getElementById("q3").value.trim();
-    const q4 = document.getElementById("q4").value.trim();
-    const q5 = document.getElementById("q5").value.trim();
+    const studentEmail =
+        document.getElementById("studentEmail").value.trim();
+
+    const q1 =
+        document.querySelector('input[name="q1"]:checked');
+
+    const q2 =
+        document.querySelectorAll('input[name="q2"]:checked');
+
+    const q3 =
+        document.getElementById("q3").value.trim();
+
+    const q4 =
+        document.getElementById("q4").value.trim();
+
+    const q5 =
+        document.getElementById("q5").value.trim();
+
+    if (!studentName) {
+        alert("Please enter your name.");
+        return;
+    }
 
     if (!q1) {
         alert("Please answer Question 1.");
@@ -298,9 +374,26 @@ function submitActivity() {
     const formData = new FormData();
 
     formData.append("access_key", ACCESS_KEY);
-    formData.append("subject", "New Classroom Activity Response");
 
-    formData.append("Question 1", q1.value);
+    formData.append(
+        "subject",
+        "New Learning Environment Activity Response"
+    );
+
+    formData.append(
+        "Student Name",
+        studentName
+    );
+
+    formData.append(
+        "Student Email",
+        studentEmail
+    );
+
+    formData.append(
+        "Question 1",
+        q1.value
+    );
 
     formData.append(
         "Question 2",
@@ -309,15 +402,28 @@ function submitActivity() {
             .join(", ")
     );
 
-    formData.append("Question 3", q3);
-    formData.append("Question 4", q4);
-    formData.append("Question 5", q5);
+    formData.append(
+        "Question 3",
+        q3
+    );
+
+    formData.append(
+        "Question 4",
+        q4
+    );
+
+    formData.append(
+        "Question 5",
+        q5
+    );
 
     fetch(WEB3FORMS_URL, {
         method: "POST",
         body: formData
     })
+
     .then(response => response.json())
+
     .then(data => {
 
         if (data.success) {
@@ -331,16 +437,20 @@ function submitActivity() {
 
         } else {
 
-            alert("There was a problem submitting your answers. Please try again.");
+            alert(
+                "There was a problem submitting your answers. Please try again."
+            );
 
             console.error(data);
-
         }
 
     })
+
     .catch(error => {
 
-        alert("There was a problem submitting your answers. Please try again.");
+        alert(
+            "There was a problem submitting your answers. Please try again."
+        );
 
         console.error(error);
 
@@ -352,3 +462,4 @@ function submitActivity() {
 
 </body>
 </html>
+```
