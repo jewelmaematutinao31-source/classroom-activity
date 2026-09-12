@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -170,18 +169,50 @@ button:hover {
     background: #14532d;
 }
 
-.image-link {
-    display: block;
-    text-decoration: none;
-    cursor: zoom-in;
+/* THANK YOU SCREEN */
+
+.thank-you {
+    display: none;
+    min-height: 80vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.image-link img {
-    transition: transform 0.2s;
+.thank-you-box {
+    width: 90%;
+    max-width: 650px;
+    padding: 55px 30px;
+    border-radius: 25px;
+    background: url("green.jpg") center center / cover no-repeat;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
 }
 
-.image-link:hover img {
-    transform: scale(1.02);
+.thank-you-box h1 {
+    font-size: 42px;
+    color: #14532d;
+    margin: 0;
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 16px;
+    z-index: 10;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
 }
 
 @media (max-width: 700px) {
@@ -202,6 +233,10 @@ button:hover {
         font-size: 20px;
     }
 
+    .thank-you-box h1 {
+        font-size: 34px;
+    }
+
 }
 
 </style>
@@ -210,9 +245,9 @@ button:hover {
 
 <body>
 
-<div class="container">
+<!-- MAIN ACTIVITY -->
 
-    <!-- HEADER -->
+<div class="container" id="activity">
 
     <div class="header">
 
@@ -227,18 +262,15 @@ button:hover {
     </div>
 
 
-    <!-- CLASSROOM IMAGES -->
+    <!-- CLASSROOMS -->
 
     <div class="classrooms">
-
-        <!-- ENVIRONMENT A -->
 
         <div class="classroom-card">
 
             <h2>Learning Environment A</h2>
 
             <a
-                class="image-link"
                 href="idea.jpg.jpg"
                 target="_blank"
             >
@@ -257,20 +289,17 @@ button:hover {
         </div>
 
 
-        <!-- ENVIRONMENT B -->
-
         <div class="classroom-card">
 
             <h2>Learning Environment B</h2>
 
             <a
-                class="image-link"
                 href="not%20idea.jpg.jpg"
                 target="_blank"
             >
 
                 <img
-                    src="not%20idea.jpg.jpg"
+                    src="not idea.jpg.jpg"
                     alt="Learning Environment B"
                 >
 
@@ -292,15 +321,11 @@ button:hover {
         method="POST"
     >
 
-        <!-- WEB3FORMS ACCESS KEY -->
-
         <input
             type="hidden"
             name="access_key"
             value="a2681b63-6a82-45fd-83d8-de29fbfc298e"
         >
-
-        <!-- EMAIL SUBJECT -->
 
         <input
             type="hidden"
@@ -308,15 +333,13 @@ button:hover {
             value="New Learning Environment Activity Response"
         >
 
-        <!-- AFTER SUBMITTING -->
+        <!-- RETURN TO SAME PAGE -->
 
         <input
             type="hidden"
             name="redirect"
-            value="https://jewelmaematutinao31-source.github.io/classroom-activity/thank-you.html"
+            value="https://jewelmaematutinao31-source.github.io/classroom-activity/?submitted=1"
         >
-
-        <!-- SPAM PROTECTION -->
 
         <input
             type="checkbox"
@@ -348,9 +371,6 @@ button:hover {
 
         <div class="questions">
 
-
-            <!-- QUESTION 1 -->
-
             <div class="question">
 
                 <h3>
@@ -358,34 +378,26 @@ button:hover {
                 </h3>
 
                 <label>
-
                     <input
                         type="radio"
                         name="Question 1"
                         value="Learning Environment A"
                         required
                     >
-
                     Learning Environment A
-
                 </label>
 
                 <label>
-
                     <input
                         type="radio"
                         name="Question 1"
                         value="Learning Environment B"
                     >
-
                     Learning Environment B
-
                 </label>
 
             </div>
 
-
-            <!-- QUESTION 2 -->
 
             <div class="question">
 
@@ -394,57 +406,43 @@ button:hover {
                 </h3>
 
                 <label>
-
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="A clean and organized environment"
                     >
-
                     A clean and organized environment
-
                 </label>
 
                 <label>
-
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="Comfortable places for students to learn"
                     >
-
                     Comfortable places for students to learn
-
                 </label>
 
                 <label>
-
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="Useful learning materials"
                     >
-
                     Useful learning materials
-
                 </label>
 
                 <label>
-
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="A safe environment"
                     >
-
                     A safe environment
-
                 </label>
 
             </div>
 
-
-            <!-- QUESTION 3 -->
 
             <div class="question">
 
@@ -461,8 +459,6 @@ button:hover {
             </div>
 
 
-            <!-- QUESTION 4 -->
-
             <div class="question">
 
                 <h3>
@@ -477,8 +473,6 @@ button:hover {
 
             </div>
 
-
-            <!-- QUESTION 5 -->
 
             <div class="question">
 
@@ -495,8 +489,6 @@ button:hover {
             </div>
 
 
-            <!-- SUBMIT -->
-
             <button type="submit">
                 Submit My Answers
             </button>
@@ -507,6 +499,69 @@ button:hover {
 
 </div>
 
+
+<!-- ONE-FILE THANK YOU SCREEN -->
+
+<div class="thank-you" id="thankYou">
+
+    <div class="thank-you-box">
+
+        <h1>
+            You are a great teacher! 🌟
+        </h1>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("submitted") === "1") {
+
+    document.getElementById("activity").style.display = "none";
+
+    document.getElementById("thankYou").style.display = "flex";
+
+    function createConfetti() {
+
+        const confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 3) + "s";
+
+        confetti.style.backgroundColor =
+            [
+                "#166534",
+                "#22c55e",
+                "#facc15",
+                "#f97316",
+                "#3b82f6",
+                "#ec4899"
+            ][Math.floor(Math.random() * 6)];
+
+        document.body.appendChild(confetti);
+
+        setTimeout(function() {
+            confetti.remove();
+        }, 6500);
+
+    }
+
+    for (let i = 0; i < 120; i++) {
+        setTimeout(createConfetti, i * 25);
+    }
+
+}
+
+</script>
+
 </body>
 </html>
-```
