@@ -8,6 +8,7 @@
 <title>Learning Environment</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -28,6 +29,7 @@ body {
     padding: 25px 15px 50px;
 }
 
+
 /* ALL MAIN CARDS */
 
 .header,
@@ -37,6 +39,7 @@ body {
     background: url("green.jpg") center center / cover no-repeat;
     box-shadow: 0 8px 25px rgba(0,0,0,0.18);
 }
+
 
 /* HEADER */
 
@@ -58,6 +61,7 @@ h1 {
     line-height: 1.6;
     color: #1f2937;
 }
+
 
 /* STUDENT INFO */
 
@@ -82,6 +86,7 @@ h1 {
     font-size: 16px;
     background: rgba(255,255,255,0.9);
 }
+
 
 /* CLASSROOMS */
 
@@ -125,6 +130,7 @@ h1 {
     margin: 12px 0 5px;
     font-size: 14px;
 }
+
 
 /* QUESTIONS */
 
@@ -173,6 +179,7 @@ textarea {
     background: rgba(255,255,255,0.9);
 }
 
+
 /* BUTTON */
 
 button {
@@ -193,6 +200,7 @@ button:hover {
     transform: translateY(-2px);
 }
 
+
 /* SUCCESS MESSAGE */
 
 #result {
@@ -210,6 +218,7 @@ button:hover {
     margin-top: 0;
 }
 
+
 /* IMAGE POP-UP */
 
 .modal {
@@ -220,30 +229,49 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 23, 42, 0.85);
+
+    background: rgba(15,23,42,0.88);
+
     align-items: center;
     justify-content: center;
+
     padding: 20px;
+
+    cursor: pointer;
 }
 
 .modal-content {
-    max-width: 900px;
-    max-height: 85vh;
+    max-width: 92%;
+    max-height: 88vh;
+
     width: auto;
     height: auto;
+
+    object-fit: contain;
+
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+
+    cursor: default;
 }
 
 .close {
     position: absolute;
-    top: 20px;
-    right: 30px;
+
+    top: 15px;
+    right: 25px;
+
     color: white;
-    font-size: 42px;
+
+    font-size: 45px;
     font-weight: bold;
+
     cursor: pointer;
+
+    z-index: 10000;
 }
+
 
 /* MOBILE */
 
@@ -264,13 +292,22 @@ button:hover {
     .classroom-card h2 {
         font-size: 20px;
     }
+
+    .modal-content {
+        max-width: 96%;
+        max-height: 80vh;
+    }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
+
 
     <!-- HEADER -->
 
@@ -279,9 +316,13 @@ button:hover {
         <h1>🏫 Learning Environment</h1>
 
         <div class="instructions">
+
             Look carefully at the two learning environments.
+
             <br>
+
             Compare them and answer the questions below.
+
         </div>
 
     </div>
@@ -308,12 +349,17 @@ button:hover {
 
     <div class="classrooms">
 
+
+        <!-- ENVIRONMENT A -->
+
         <div
             class="classroom-card"
             onclick="openModal('idea.jpg.jpg')"
         >
 
-            <h2>Learning Environment A</h2>
+            <h2>
+                Learning Environment A
+            </h2>
 
             <img
                 src="idea.jpg.jpg"
@@ -327,12 +373,16 @@ button:hover {
         </div>
 
 
+        <!-- ENVIRONMENT B -->
+
         <div
             class="classroom-card"
             onclick="openModal('not%20idea.jpg.jpg')"
         >
 
-            <h2>Learning Environment B</h2>
+            <h2>
+                Learning Environment B
+            </h2>
 
             <img
                 src="not%20idea.jpg.jpg"
@@ -352,32 +402,45 @@ button:hover {
 
     <div class="questions">
 
+
+        <!-- QUESTION 1 -->
+
         <div class="question">
 
             <h3>
                 1. Which learning environment looks more suitable for learning?
             </h3>
 
+
             <label>
+
                 <input
                     type="radio"
                     name="q1"
                     value="Learning Environment A"
                 >
+
                 Learning Environment A
+
             </label>
 
+
             <label>
+
                 <input
                     type="radio"
                     name="q1"
                     value="Learning Environment B"
                 >
+
                 Learning Environment B
+
             </label>
 
         </div>
 
+
+        <!-- QUESTION 2 -->
 
         <div class="question">
 
@@ -385,44 +448,62 @@ button:hover {
                 2. What things should a good classroom have?
             </h3>
 
+
             <label>
+
                 <input
                     type="checkbox"
                     name="q2"
                     value="Clean and organized"
                 >
+
                 A clean and organized environment
+
             </label>
 
+
             <label>
+
                 <input
                     type="checkbox"
                     name="q2"
                     value="Comfortable"
                 >
+
                 Comfortable places for students to learn
+
             </label>
 
+
             <label>
+
                 <input
                     type="checkbox"
                     name="q2"
                     value="Useful learning materials"
                 >
+
                 Useful learning materials
+
             </label>
 
+
             <label>
+
                 <input
                     type="checkbox"
                     name="q2"
                     value="Safe"
                 >
+
                 A safe environment
+
             </label>
 
         </div>
 
+
+        <!-- QUESTION 3 -->
 
         <div class="question">
 
@@ -438,6 +519,8 @@ button:hover {
         </div>
 
 
+        <!-- QUESTION 4 -->
+
         <div class="question">
 
             <h3>
@@ -451,6 +534,8 @@ button:hover {
 
         </div>
 
+
+        <!-- QUESTION 5 -->
 
         <div class="question">
 
@@ -466,14 +551,23 @@ button:hover {
         </div>
 
 
-        <button onclick="submitActivity()">
+        <!-- SUBMIT -->
+
+        <button
+            type="button"
+            onclick="submitActivity()"
+        >
             Submit My Answers
         </button>
 
 
+        <!-- SUCCESS -->
+
         <div id="result">
 
-            <h2>🎉 Thank You!</h2>
+            <h2>
+                🎉 Thank You!
+            </h2>
 
             <p>
                 You have completed the activity.
@@ -498,18 +592,27 @@ button:hover {
     onclick="closeModal()"
 >
 
-    <span class="close">&times;</span>
+    <span
+        class="close"
+        onclick="closeModal()"
+    >
+        &times;
+    </span>
+
 
     <img
         id="modalImage"
         class="modal-content"
         onclick="event.stopPropagation()"
+        alt="Enlarged classroom"
     >
 
 </div>
 
 
 <script>
+
+/* WEB3FORMS */
 
 const WEB3FORMS_URL =
     "https://api.web3forms.com/submit";
@@ -518,18 +621,30 @@ const ACCESS_KEY =
     "a2681b63-6a82-45fd-83d8-de29fbfc298e";
 
 
-/* IMAGE POP-UP */
+/* OPEN CLASSROOM IMAGE */
 
 function openModal(image) {
 
-    document.getElementById("modalImage").src = image;
+    const modal =
+        document.getElementById("imageModal");
 
-    document.getElementById("imageModal").style.display = "flex";
+    const modalImage =
+        document.getElementById("modalImage");
+
+    modalImage.src = image;
+
+    modal.style.display = "flex";
 }
+
+
+/* CLOSE CLASSROOM IMAGE */
 
 function closeModal() {
 
-    document.getElementById("imageModal").style.display = "none";
+    document.getElementById(
+        "imageModal"
+    ).style.display = "none";
+
 }
 
 
@@ -537,18 +652,235 @@ function closeModal() {
 
 function submitActivity() {
 
+
     const studentName =
-        document.getElementById("studentName").value.trim();
+        document.getElementById(
+            "studentName"
+        ).value.trim();
+
 
     const q1 =
         document.querySelector(
             'input[name="q1"]:checked'
         );
 
+
     const q2 =
         document.querySelectorAll(
             'input[name="q2"]:checked'
         );
 
+
     const q3 =
+        document.getElementById(
+            "q3"
+        ).value.trim();
+
+
+    const q4 =
+        document.getElementById(
+            "q4"
+        ).value.trim();
+
+
+    const q5 =
+        document.getElementById(
+            "q5"
+        ).value.trim();
+
+
+
+    /* VALIDATION */
+
+    if (!studentName) {
+
+        alert(
+            "Please enter your name."
+        );
+
+        return;
+    }
+
+
+    if (!q1) {
+
+        alert(
+            "Please answer Question 1."
+        );
+
+        return;
+    }
+
+
+    if (q2.length === 0) {
+
+        alert(
+            "Please answer Question 2."
+        );
+
+        return;
+    }
+
+
+    if (!q3) {
+
+        alert(
+            "Please answer Question 3."
+        );
+
+        return;
+    }
+
+
+    if (!q4) {
+
+        alert(
+            "Please answer Question 4."
+        );
+
+        return;
+    }
+
+
+    if (!q5) {
+
+        alert(
+            "Please answer Question 5."
+        );
+
+        return;
+    }
+
+
+
+    /* PREPARE FORM */
+
+    const formData =
+        new FormData();
+
+
+    formData.append(
+        "access_key",
+        ACCESS_KEY
+    );
+
+
+    formData.append(
+        "subject",
+        "New Learning Environment Activity Response"
+    );
+
+
+    formData.append(
+        "Student Name",
+        studentName
+    );
+
+
+    formData.append(
+        "Question 1",
+        q1.value
+    );
+
+
+    formData.append(
+        "Question 2",
+        Array
+            .from(q2)
+            .map(
+                x => x.value
+            )
+            .join(", ")
+    );
+
+
+    formData.append(
+        "Question 3",
+        q3
+    );
+
+
+    formData.append(
+        "Question 4",
+        q4
+    );
+
+
+    formData.append(
+        "Question 5",
+        q5
+    );
+
+
+
+    /* SEND TO WEB3FORMS */
+
+    fetch(
+        WEB3FORMS_URL,
+        {
+            method: "POST",
+            body: formData
+        }
+    )
+
+    .then(
+        response => response.json()
+    )
+
+    .then(
+        data => {
+
+            if (data.success) {
+
+
+                document.getElementById(
+                    "result"
+                ).style.display = "block";
+
+
+                window.scrollTo({
+
+                    top:
+                        document.body.scrollHeight,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+
+            } else {
+
+
+                alert(
+                    "There was a problem submitting your answers. Please try again."
+                );
+
+
+                console.error(data);
+
+            }
+
+        }
+    )
+
+
+    .catch(
+        error => {
+
+            alert(
+                "There was a problem submitting your answers. Please try again."
+            );
+
+            console.error(error);
+
+        }
+    );
+
+}
+
+</script>
+
+</body>
+</html>
 ```
