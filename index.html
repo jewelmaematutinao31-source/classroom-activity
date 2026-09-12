@@ -276,6 +276,9 @@
 
 <script>
 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWxMKwypp3PS-_lGRUkQj62owhP1iB0E7Q37DiVwkBfWrXMkIZthG5VeUYHM1dlJJdkA/exec";
+
+
 function submitActivity() {
 
     const q1 = document.querySelector('input[name="q1"]:checked');
@@ -306,28 +309,46 @@ function submitActivity() {
 
 
     const answerData = {
-        date: new Date().toLocaleString(),
         question1: q1.value,
-        question2: Array.from(q2).map(x => x.value),
+
+        question2: Array.from(q2)
+            .map(x => x.value)
+            .join(", "),
+
         question3: q3,
+
         question4: q4,
+
         question5: q5
     };
 
 
-    localStorage.setItem(
-        "classroomActivityResponse",
-        JSON.stringify(answerData)
-    );
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(answerData)
+    })
+    .then(() => {
 
+        document.getElementById("result").style.display = "block";
 
-    document.getElementById("result").style.display = "block";
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
 
+    })
+    .catch((error) => {
 
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
+        alert("There was a problem submitting your answers. Please try again.");
+
+        console.error(error);
+
     });
+
 }
 
 </script>
