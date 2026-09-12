@@ -178,13 +178,11 @@
 
         <div class="classroom-card">
             <h2>✅ Ideal Classroom</h2>
-
             <img src="idea.jpg.jpg" alt="Ideal classroom">
         </div>
 
         <div class="classroom-card">
             <h2>❌ Not-So-Ideal Classroom</h2>
-
             <img src="not%20idea.jpg.jpg" alt="Not-so-ideal classroom">
         </div>
 
@@ -233,25 +231,19 @@
         <div class="question">
             <h3>3. What problems can you notice in the not-so-ideal classroom?</h3>
 
-            <textarea
-                id="q3"
-                placeholder="Write your answer here..."></textarea>
+            <textarea id="q3" placeholder="Write your answer here..."></textarea>
         </div>
 
         <div class="question">
             <h3>4. What would you change to improve the classroom?</h3>
 
-            <textarea
-                id="q4"
-                placeholder="Write your ideas here..."></textarea>
+            <textarea id="q4" placeholder="Write your ideas here..."></textarea>
         </div>
 
         <div class="question">
             <h3>5. Which classroom would you prefer to study in? Why?</h3>
 
-            <textarea
-                id="q5"
-                placeholder="Explain your answer..."></textarea>
+            <textarea id="q5" placeholder="Explain your answer..."></textarea>
         </div>
 
         <button onclick="submitActivity()">
@@ -276,21 +268,17 @@
 
 <script>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWxMKwypp3PS-_lGRUkQj62owhP1iB0E7Q37DiVwkBfWrXMkIZthG5VeUYHM1dlJJdkA/exec";
-
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const ACCESS_KEY = "a2681b63-6a82-45fd-83d8-de29fbfc298e";
 
 function submitActivity() {
 
     const q1 = document.querySelector('input[name="q1"]:checked');
-
     const q2 = document.querySelectorAll('input[name="q2"]:checked');
 
     const q3 = document.getElementById("q3").value.trim();
-
     const q4 = document.getElementById("q4").value.trim();
-
     const q5 = document.getElementById("q5").value.trim();
-
 
     if (!q1) {
         alert("Please answer Question 1.");
@@ -307,41 +295,50 @@ function submitActivity() {
         return;
     }
 
+    const formData = new FormData();
 
-    const answerData = {
-        question1: q1.value,
+    formData.append("access_key", ACCESS_KEY);
+    formData.append("subject", "New Classroom Activity Response");
 
-        question2: Array.from(q2)
+    formData.append("Question 1", q1.value);
+
+    formData.append(
+        "Question 2",
+        Array.from(q2)
             .map(x => x.value)
-            .join(", "),
+            .join(", ")
+    );
 
-        question3: q3,
+    formData.append("Question 3", q3);
+    formData.append("Question 4", q4);
+    formData.append("Question 5", q5);
 
-        question4: q4,
-
-        question5: q5
-    };
-
-
-    fetch(SCRIPT_URL, {
+    fetch(WEB3FORMS_URL, {
         method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(answerData)
+        body: formData
     })
-    .then(() => {
+    .then(response => response.json())
+    .then(data => {
 
-        document.getElementById("result").style.display = "block";
+        if (data.success) {
 
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth"
-        });
+            document.getElementById("result").style.display = "block";
+
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+
+        } else {
+
+            alert("There was a problem submitting your answers. Please try again.");
+
+            console.error(data);
+
+        }
 
     })
-    .catch((error) => {
+    .catch(error => {
 
         alert("There was a problem submitting your answers. Please try again.");
 
