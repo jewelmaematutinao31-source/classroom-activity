@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +113,6 @@ h1 {
 .questions {
     padding: 25px;
     border-radius: 22px;
-    margin-bottom: 25px;
 }
 
 .question {
@@ -169,17 +169,23 @@ button:hover {
     background: #14532d;
 }
 
-/* THANK YOU SCREEN */
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
 
-.thank-you {
+/* SAME-PAGE SUCCESS SCREEN */
+
+#successScreen {
     display: none;
-    min-height: 80vh;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 20px;
 }
 
-.thank-you-box {
+.success-box {
     width: 90%;
     max-width: 650px;
     padding: 55px 30px;
@@ -188,9 +194,9 @@ button:hover {
     box-shadow: 0 10px 35px rgba(0,0,0,0.25);
 }
 
-.thank-you-box h1 {
-    font-size: 42px;
+.success-box h1 {
     color: #14532d;
+    font-size: 42px;
     margin: 0;
 }
 
@@ -199,7 +205,7 @@ button:hover {
     top: -20px;
     width: 10px;
     height: 16px;
-    z-index: 10;
+    z-index: 100;
     animation: fall linear forwards;
 }
 
@@ -233,7 +239,7 @@ button:hover {
         font-size: 20px;
     }
 
-    .thank-you-box h1 {
+    .success-box h1 {
         font-size: 34px;
     }
 
@@ -262,9 +268,11 @@ button:hover {
     </div>
 
 
-    <!-- CLASSROOMS -->
+    <!-- CLASSROOM IMAGES -->
 
     <div class="classrooms">
+
+        <!-- ENVIRONMENT A -->
 
         <div class="classroom-card">
 
@@ -288,6 +296,8 @@ button:hover {
 
         </div>
 
+
+        <!-- ENVIRONMENT B -->
 
         <div class="classroom-card">
 
@@ -316,10 +326,9 @@ button:hover {
 
     <!-- FORM -->
 
-    <form
-        action="https://api.web3forms.com/submit"
-        method="POST"
-    >
+    <form id="activityForm">
+
+        <!-- WEB3FORMS -->
 
         <input
             type="hidden"
@@ -333,13 +342,7 @@ button:hover {
             value="New Learning Environment Activity Response"
         >
 
-        <!-- RETURN TO SAME PAGE -->
-
-        <input
-            type="hidden"
-            name="redirect"
-            value="https://jewelmaematutinao31-source.github.io/classroom-activity/?submitted=1"
-        >
+        <!-- SPAM PROTECTION -->
 
         <input
             type="checkbox"
@@ -371,6 +374,9 @@ button:hover {
 
         <div class="questions">
 
+
+            <!-- QUESTION 1 -->
+
             <div class="question">
 
                 <h3>
@@ -378,26 +384,34 @@ button:hover {
                 </h3>
 
                 <label>
+
                     <input
                         type="radio"
                         name="Question 1"
                         value="Learning Environment A"
                         required
                     >
+
                     Learning Environment A
+
                 </label>
 
                 <label>
+
                     <input
                         type="radio"
                         name="Question 1"
                         value="Learning Environment B"
                     >
+
                     Learning Environment B
+
                 </label>
 
             </div>
 
+
+            <!-- QUESTION 2 -->
 
             <div class="question">
 
@@ -406,43 +420,57 @@ button:hover {
                 </h3>
 
                 <label>
+
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="A clean and organized environment"
                     >
+
                     A clean and organized environment
+
                 </label>
 
                 <label>
+
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="Comfortable places for students to learn"
                     >
+
                     Comfortable places for students to learn
+
                 </label>
 
                 <label>
+
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="Useful learning materials"
                     >
+
                     Useful learning materials
+
                 </label>
 
                 <label>
+
                     <input
                         type="checkbox"
                         name="Question 2"
                         value="A safe environment"
                     >
+
                     A safe environment
+
                 </label>
 
             </div>
 
+
+            <!-- QUESTION 3 -->
 
             <div class="question">
 
@@ -459,6 +487,8 @@ button:hover {
             </div>
 
 
+            <!-- QUESTION 4 -->
+
             <div class="question">
 
                 <h3>
@@ -473,6 +503,8 @@ button:hover {
 
             </div>
 
+
+            <!-- QUESTION 5 -->
 
             <div class="question">
 
@@ -489,7 +521,12 @@ button:hover {
             </div>
 
 
-            <button type="submit">
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                id="submitButton"
+            >
                 Submit My Answers
             </button>
 
@@ -500,11 +537,11 @@ button:hover {
 </div>
 
 
-<!-- ONE-FILE THANK YOU SCREEN -->
+<!-- SUCCESS SCREEN -->
 
-<div class="thank-you" id="thankYou">
+<div id="successScreen">
 
-    <div class="thank-you-box">
+    <div class="success-box">
 
         <h1>
             You are a great teacher! 🌟
@@ -517,46 +554,94 @@ button:hover {
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
+const form = document.getElementById("activityForm");
 
-if (params.get("submitted") === "1") {
+form.addEventListener("submit", async function(event) {
 
-    document.getElementById("activity").style.display = "none";
+    event.preventDefault();
 
-    document.getElementById("thankYou").style.display = "flex";
+    const button = document.getElementById("submitButton");
 
-    function createConfetti() {
+    button.disabled = true;
+    button.textContent = "Submitting...";
 
-        const confetti = document.createElement("div");
+    const formData = new FormData(form);
 
-        confetti.className = "confetti";
+    try {
 
-        confetti.style.left =
-            Math.random() * 100 + "vw";
+        const response = await fetch(
+            "https://api.web3forms.com/submit",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
 
-        confetti.style.animationDuration =
-            (Math.random() * 3 + 3) + "s";
+        const result = await response.json();
 
-        confetti.style.backgroundColor =
-            [
-                "#166534",
-                "#22c55e",
-                "#facc15",
-                "#f97316",
-                "#3b82f6",
-                "#ec4899"
-            ][Math.floor(Math.random() * 6)];
+        if (result.success) {
 
-        document.body.appendChild(confetti);
+            document.getElementById("activity").style.display = "none";
 
-        setTimeout(function() {
-            confetti.remove();
-        }, 6500);
+            document.getElementById("successScreen").style.display = "flex";
+
+            startConfetti();
+
+        } else {
+
+            alert("Something went wrong. Please try again.");
+
+            button.disabled = false;
+            button.textContent = "Submit My Answers";
+
+        }
+
+    } catch (error) {
+
+        alert("Unable to submit. Please check your internet connection.");
+
+        button.disabled = false;
+        button.textContent = "Submit My Answers";
 
     }
 
+});
+
+
+function startConfetti() {
+
     for (let i = 0; i < 120; i++) {
-        setTimeout(createConfetti, i * 25);
+
+        setTimeout(function() {
+
+            const confetti = document.createElement("div");
+
+            confetti.className = "confetti";
+
+            confetti.style.left =
+                Math.random() * 100 + "vw";
+
+            confetti.style.animationDuration =
+                (Math.random() * 3 + 3) + "s";
+
+            confetti.style.backgroundColor =
+                [
+                    "#166534",
+                    "#22c55e",
+                    "#facc15",
+                    "#f97316",
+                    "#3b82f6",
+                    "#ec4899"
+                ][Math.floor(Math.random() * 6)];
+
+            document.body.appendChild(confetti);
+
+            setTimeout(function() {
+                confetti.remove();
+            }, 6500);
+
+        }, i * 25);
+
     }
 
 }
@@ -565,3 +650,4 @@ if (params.get("submitted") === "1") {
 
 </body>
 </html>
+```
