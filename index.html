@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,10 +17,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-
-    /* MAIN PAGE BACKGROUND */
     background: url("photo.jpg.jpg") center center / cover fixed no-repeat;
-
     color: #1e293b;
 }
 
@@ -29,9 +27,6 @@ body {
     padding: 25px 15px 50px;
 }
 
-
-/* ALL MAIN CARDS */
-
 .header,
 .student-info,
 .questions,
@@ -39,9 +34,6 @@ body {
     background: url("green.jpg") center center / cover no-repeat;
     box-shadow: 0 8px 25px rgba(0,0,0,0.18);
 }
-
-
-/* HEADER */
 
 .header {
     text-align: center;
@@ -61,9 +53,6 @@ h1 {
     line-height: 1.6;
     color: #1f2937;
 }
-
-
-/* STUDENT INFO */
 
 .student-info {
     padding: 25px;
@@ -87,9 +76,6 @@ h1 {
     background: rgba(255,255,255,0.9);
 }
 
-
-/* CLASSROOMS */
-
 .classrooms {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -100,13 +86,6 @@ h1 {
 .classroom-card {
     border-radius: 22px;
     padding: 15px;
-    transition: transform 0.25s, box-shadow 0.25s;
-    cursor: pointer;
-}
-
-.classroom-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
 }
 
 .classroom-card h2 {
@@ -131,9 +110,6 @@ h1 {
     font-size: 14px;
 }
 
-
-/* QUESTIONS */
-
 .questions {
     padding: 25px;
     border-radius: 22px;
@@ -156,7 +132,6 @@ h1 {
     background: rgba(255,255,255,0.75);
     border-radius: 12px;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
 .question label:hover {
@@ -179,9 +154,6 @@ textarea {
     background: rgba(255,255,255,0.9);
 }
 
-
-/* BUTTON */
-
 button {
     width: 100%;
     padding: 16px;
@@ -192,84 +164,27 @@ button {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
 }
 
 button:hover {
     background: #14532d;
-    transform: translateY(-2px);
 }
 
 
-/* SUCCESS MESSAGE */
+/* IMAGE LINKS */
 
-#result {
-    display: none;
-    margin-top: 25px;
-    padding: 22px;
-    background: rgba(240,253,244,0.95);
-    border: 2px solid #16a34a;
-    border-radius: 15px;
-    text-align: center;
+.image-link {
+    display: block;
+    text-decoration: none;
+    cursor: zoom-in;
 }
 
-#result h2 {
-    color: #166534;
-    margin-top: 0;
+.image-link img {
+    transition: transform 0.2s;
 }
 
-
-/* IMAGE POP-UP */
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(15,23,42,0.88);
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    cursor: pointer;
-}
-
-.modal-content {
-    max-width: 92%;
-    max-height: 88vh;
-
-    width: auto;
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 16px;
-
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-
-    cursor: default;
-}
-
-.close {
-    position: absolute;
-
-    top: 15px;
-    right: 25px;
-
-    color: white;
-
-    font-size: 45px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    z-index: 10000;
+.image-link:hover img {
+    transform: scale(1.02);
 }
 
 
@@ -293,14 +208,10 @@ button:hover {
         font-size: 20px;
     }
 
-    .modal-content {
-        max-width: 96%;
-        max-height: 80vh;
-    }
-
 }
 
 </style>
+
 </head>
 
 
@@ -328,7 +239,7 @@ button:hover {
     </div>
 
 
-    <!-- STUDENT NAME -->
+    <!-- STUDENT INFORMATION -->
 
     <div class="student-info">
 
@@ -339,32 +250,39 @@ button:hover {
         <input
             type="text"
             id="studentName"
+            name="Student Name"
             placeholder="Enter your name"
+            required
         >
 
     </div>
 
 
-    <!-- LEARNING ENVIRONMENTS -->
+    <!-- CLASSROOM IMAGES -->
 
     <div class="classrooms">
 
 
         <!-- ENVIRONMENT A -->
 
-        <div
-            class="classroom-card"
-            onclick="openModal('idea.jpg.jpg')"
-        >
+        <div class="classroom-card">
 
             <h2>
                 Learning Environment A
             </h2>
 
-            <img
-                src="idea.jpg.jpg"
-                alt="Learning Environment A"
+            <a
+                class="image-link"
+                href="idea.jpg.jpg"
+                target="_blank"
             >
+
+                <img
+                    src="idea.jpg.jpg"
+                    alt="Learning Environment A"
+                >
+
+            </a>
 
             <p class="click-text">
                 🔍 Click the picture to view it larger
@@ -375,19 +293,24 @@ button:hover {
 
         <!-- ENVIRONMENT B -->
 
-        <div
-            class="classroom-card"
-            onclick="openModal('not%20idea.jpg.jpg')"
-        >
+        <div class="classroom-card">
 
             <h2>
                 Learning Environment B
             </h2>
 
-            <img
-                src="not%20idea.jpg.jpg"
-                alt="Learning Environment B"
+            <a
+                class="image-link"
+                href="not%20idea.jpg.jpg"
+                target="_blank"
             >
+
+                <img
+                    src="not%20idea.jpg.jpg"
+                    alt="Learning Environment B"
+                >
+
+            </a>
 
             <p class="click-text">
                 🔍 Click the picture to view it larger
@@ -398,488 +321,215 @@ button:hover {
     </div>
 
 
-    <!-- QUESTIONS -->
+    <!-- ACTIVITY FORM -->
 
-    <div class="questions">
-
-
-        <!-- QUESTION 1 -->
-
-        <div class="question">
-
-            <h3>
-                1. Which learning environment looks more suitable for learning?
-            </h3>
+    <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+    >
 
 
-            <label>
+        <!-- WEB3FORMS SETTINGS -->
 
-                <input
-                    type="radio"
-                    name="q1"
-                    value="Learning Environment A"
-                >
-
-                Learning Environment A
-
-            </label>
-
-
-            <label>
-
-                <input
-                    type="radio"
-                    name="q1"
-                    value="Learning Environment B"
-                >
-
-                Learning Environment B
-
-            </label>
-
-        </div>
-
-
-        <!-- QUESTION 2 -->
-
-        <div class="question">
-
-            <h3>
-                2. What things should a good classroom have?
-            </h3>
-
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="q2"
-                    value="Clean and organized"
-                >
-
-                A clean and organized environment
-
-            </label>
-
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="q2"
-                    value="Comfortable"
-                >
-
-                Comfortable places for students to learn
-
-            </label>
-
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="q2"
-                    value="Useful learning materials"
-                >
-
-                Useful learning materials
-
-            </label>
-
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    name="q2"
-                    value="Safe"
-                >
-
-                A safe environment
-
-            </label>
-
-        </div>
-
-
-        <!-- QUESTION 3 -->
-
-        <div class="question">
-
-            <h3>
-                3. What problems can you notice in Learning Environment B?
-            </h3>
-
-            <textarea
-                id="q3"
-                placeholder="Write your answer here..."
-            ></textarea>
-
-        </div>
-
-
-        <!-- QUESTION 4 -->
-
-        <div class="question">
-
-            <h3>
-                4. What would you change to improve the learning environment?
-            </h3>
-
-            <textarea
-                id="q4"
-                placeholder="Write your ideas here..."
-            ></textarea>
-
-        </div>
-
-
-        <!-- QUESTION 5 -->
-
-        <div class="question">
-
-            <h3>
-                5. Which learning environment would you prefer to study in? Why?
-            </h3>
-
-            <textarea
-                id="q5"
-                placeholder="Explain your answer..."
-            ></textarea>
-
-        </div>
-
-
-        <!-- SUBMIT -->
-
-        <button
-            type="button"
-            onclick="submitActivity()"
+        <input
+            type="hidden"
+            name="access_key"
+            value="a2681b63-6a82-45fd-83d8-de29fbfc298e"
         >
-            Submit My Answers
-        </button>
 
 
-        <!-- SUCCESS -->
+        <input
+            type="hidden"
+            name="subject"
+            value="New Learning Environment Activity Response"
+        >
 
-        <div id="result">
 
-            <h2>
-                🎉 Thank You!
-            </h2>
+        <!-- AFTER SUBMISSION -->
 
-            <p>
-                You have completed the activity.
-            </p>
+        <input
+            type="hidden"
+            name="redirect"
+            value="https://jewelmaematutinao31-source.github.io/classroom-activity/?submitted=true"
+        >
 
-            <p>
-                Thank you for sharing your ideas! 😊
-            </p>
+
+        <!-- SPAM PROTECTION -->
+
+        <input
+            type="checkbox"
+            name="botcheck"
+            style="display:none;"
+        >
+
+
+        <div class="questions">
+
+
+            <!-- QUESTION 1 -->
+
+            <div class="question">
+
+                <h3>
+                    1. Which learning environment looks more suitable for learning?
+                </h3>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="Question 1"
+                        value="Learning Environment A"
+                        required
+                    >
+
+                    Learning Environment A
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="Question 1"
+                        value="Learning Environment B"
+                    >
+
+                    Learning Environment B
+
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 2 -->
+
+            <div class="question">
+
+                <h3>
+                    2. What things should a good classroom have?
+                </h3>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="Question 2"
+                        value="A clean and organized environment"
+                    >
+
+                    A clean and organized environment
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="Question 2"
+                        value="Comfortable places for students to learn"
+                    >
+
+                    Comfortable places for students to learn
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="Question 2"
+                        value="Useful learning materials"
+                    >
+
+                    Useful learning materials
+
+                </label>
+
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        name="Question 2"
+                        value="A safe environment"
+                    >
+
+                    A safe environment
+
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 3 -->
+
+            <div class="question">
+
+                <h3>
+                    3. What problems can you notice in Learning Environment B?
+                </h3>
+
+                <textarea
+                    name="Question 3"
+                    placeholder="Write your answer here..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="question">
+
+                <h3>
+                    4. What would you change to improve the learning environment?
+                </h3>
+
+                <textarea
+                    name="Question 4"
+                    placeholder="Write your ideas here..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+
+            <div class="question">
+
+                <h3>
+                    5. Which learning environment would you prefer to study in? Why?
+                </h3>
+
+                <textarea
+                    name="Question 5"
+                    placeholder="Explain your answer..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button type="submit">
+                Submit My Answers
+            </button>
+
 
         </div>
 
-    </div>
+    </form>
 
 </div>
-
-
-<!-- IMAGE POP-UP -->
-
-<div
-    id="imageModal"
-    class="modal"
-    onclick="closeModal()"
->
-
-    <span
-        class="close"
-        onclick="closeModal()"
-    >
-        &times;
-    </span>
-
-
-    <img
-        id="modalImage"
-        class="modal-content"
-        onclick="event.stopPropagation()"
-        alt="Enlarged classroom"
-    >
-
-</div>
-
-
-<script>
-
-/* WEB3FORMS */
-
-const WEB3FORMS_URL =
-    "https://api.web3forms.com/submit";
-
-const ACCESS_KEY =
-    "a2681b63-6a82-45fd-83d8-de29fbfc298e";
-
-
-/* OPEN CLASSROOM IMAGE */
-
-function openModal(image) {
-
-    const modal =
-        document.getElementById("imageModal");
-
-    const modalImage =
-        document.getElementById("modalImage");
-
-    modalImage.src = image;
-
-    modal.style.display = "flex";
-}
-
-
-/* CLOSE CLASSROOM IMAGE */
-
-function closeModal() {
-
-    document.getElementById(
-        "imageModal"
-    ).style.display = "none";
-
-}
-
-
-/* SUBMIT ACTIVITY */
-
-function submitActivity() {
-
-
-    const studentName =
-        document.getElementById(
-            "studentName"
-        ).value.trim();
-
-
-    const q1 =
-        document.querySelector(
-            'input[name="q1"]:checked'
-        );
-
-
-    const q2 =
-        document.querySelectorAll(
-            'input[name="q2"]:checked'
-        );
-
-
-    const q3 =
-        document.getElementById(
-            "q3"
-        ).value.trim();
-
-
-    const q4 =
-        document.getElementById(
-            "q4"
-        ).value.trim();
-
-
-    const q5 =
-        document.getElementById(
-            "q5"
-        ).value.trim();
-
-
-
-    /* VALIDATION */
-
-    if (!studentName) {
-
-        alert(
-            "Please enter your name."
-        );
-
-        return;
-    }
-
-
-    if (!q1) {
-
-        alert(
-            "Please answer Question 1."
-        );
-
-        return;
-    }
-
-
-    if (q2.length === 0) {
-
-        alert(
-            "Please answer Question 2."
-        );
-
-        return;
-    }
-
-
-    if (!q3) {
-
-        alert(
-            "Please answer Question 3."
-        );
-
-        return;
-    }
-
-
-    if (!q4) {
-
-        alert(
-            "Please answer Question 4."
-        );
-
-        return;
-    }
-
-
-    if (!q5) {
-
-        alert(
-            "Please answer Question 5."
-        );
-
-        return;
-    }
-
-
-
-    /* PREPARE FORM */
-
-    const formData =
-        new FormData();
-
-
-    formData.append(
-        "access_key",
-        ACCESS_KEY
-    );
-
-
-    formData.append(
-        "subject",
-        "New Learning Environment Activity Response"
-    );
-
-
-    formData.append(
-        "Student Name",
-        studentName
-    );
-
-
-    formData.append(
-        "Question 1",
-        q1.value
-    );
-
-
-    formData.append(
-        "Question 2",
-        Array
-            .from(q2)
-            .map(
-                x => x.value
-            )
-            .join(", ")
-    );
-
-
-    formData.append(
-        "Question 3",
-        q3
-    );
-
-
-    formData.append(
-        "Question 4",
-        q4
-    );
-
-
-    formData.append(
-        "Question 5",
-        q5
-    );
-
-
-
-    /* SEND TO WEB3FORMS */
-
-    fetch(
-        WEB3FORMS_URL,
-        {
-            method: "POST",
-            body: formData
-        }
-    )
-
-    .then(
-        response => response.json()
-    )
-
-    .then(
-        data => {
-
-            if (data.success) {
-
-
-                document.getElementById(
-                    "result"
-                ).style.display = "block";
-
-
-                window.scrollTo({
-
-                    top:
-                        document.body.scrollHeight,
-
-                    behavior:
-                        "smooth"
-
-                });
-
-
-            } else {
-
-
-                alert(
-                    "There was a problem submitting your answers. Please try again."
-                );
-
-
-                console.error(data);
-
-            }
-
-        }
-    )
-
-
-    .catch(
-        error => {
-
-            alert(
-                "There was a problem submitting your answers. Please try again."
-            );
-
-            console.error(error);
-
-        }
-    );
-
-}
-
-</script>
 
 </body>
 </html>
