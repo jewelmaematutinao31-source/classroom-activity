@@ -15,7 +15,10 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+
+    /* MAIN PAGE BACKGROUND */
     background: url("photo.jpg.jpg") center center / cover fixed no-repeat;
+
     color: #1e293b;
 }
 
@@ -25,55 +28,62 @@ body {
     padding: 25px 15px 50px;
 }
 
+/* ALL MAIN CARDS */
+
+.header,
+.student-info,
+.questions,
+.classroom-card {
+    background: url("green.jpg") center center / cover no-repeat;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+}
+
 /* HEADER */
 
 .header {
     text-align: center;
-    background: url("background.jpg") center center / cover no-repeat;
     padding: 28px;
     border-radius: 22px;
     margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 h1 {
     margin: 0 0 10px;
-    color: #1769aa;
+    color: #14532d;
     font-size: 32px;
 }
 
 .instructions {
     font-size: 17px;
     line-height: 1.6;
-    color: #475569;
+    color: #1f2937;
 }
 
 /* STUDENT INFO */
 
-.student-info,
-.questions {
-    background: white;
+.student-info {
     padding: 25px;
     border-radius: 22px;
     margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .student-info label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
+    color: #14532d;
 }
 
 .student-info input {
     width: 100%;
     padding: 13px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #86a98b;
     border-radius: 12px;
     font-size: 16px;
+    background: rgba(255,255,255,0.9);
 }
 
-/* CLASSROOM IMAGES */
+/* CLASSROOMS */
 
 .classrooms {
     display: grid;
@@ -83,10 +93,8 @@ h1 {
 }
 
 .classroom-card {
-    background: white;
     border-radius: 22px;
     padding: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.18);
     transition: transform 0.25s, box-shadow 0.25s;
     cursor: pointer;
 }
@@ -98,7 +106,7 @@ h1 {
 
 .classroom-card h2 {
     text-align: center;
-    color: #1769aa;
+    color: #14532d;
     margin: 8px 0 15px;
     font-size: 22px;
 }
@@ -113,12 +121,18 @@ h1 {
 
 .click-text {
     text-align: center;
-    color: #64748b;
+    color: #365a3b;
     margin: 12px 0 5px;
     font-size: 14px;
 }
 
 /* QUESTIONS */
+
+.questions {
+    padding: 25px;
+    border-radius: 22px;
+    margin-bottom: 25px;
+}
 
 .question {
     margin-bottom: 28px;
@@ -126,21 +140,21 @@ h1 {
 
 .question h3 {
     margin-bottom: 12px;
-    color: #1e40af;
+    color: #14532d;
 }
 
 .question label {
     display: block;
     margin: 9px 0;
     padding: 12px;
-    background: #f0f9ff;
+    background: rgba(255,255,255,0.75);
     border-radius: 12px;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .question label:hover {
-    background: #dbeafe;
+    background: rgba(255,255,255,0.95);
 }
 
 input[type="radio"],
@@ -152,10 +166,11 @@ textarea {
     width: 100%;
     min-height: 110px;
     padding: 13px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #86a98b;
     border-radius: 12px;
     font-size: 16px;
     resize: vertical;
+    background: rgba(255,255,255,0.9);
 }
 
 /* BUTTON */
@@ -165,7 +180,7 @@ button {
     padding: 16px;
     border: none;
     border-radius: 14px;
-    background: #1976d2;
+    background: #166534;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -174,7 +189,7 @@ button {
 }
 
 button:hover {
-    background: #125ea8;
+    background: #14532d;
     transform: translateY(-2px);
 }
 
@@ -184,14 +199,14 @@ button:hover {
     display: none;
     margin-top: 25px;
     padding: 22px;
-    background: #ecfdf5;
-    border: 2px solid #10b981;
+    background: rgba(240,253,244,0.95);
+    border: 2px solid #16a34a;
     border-radius: 15px;
     text-align: center;
 }
 
 #result h2 {
-    color: #047857;
+    color: #166534;
     margin-top: 0;
 }
 
@@ -536,146 +551,4 @@ function submitActivity() {
         );
 
     const q3 =
-        document.getElementById("q3").value.trim();
-
-    const q4 =
-        document.getElementById("q4").value.trim();
-
-    const q5 =
-        document.getElementById("q5").value.trim();
-
-
-    if (!studentName) {
-
-        alert("Please enter your name.");
-
-        return;
-    }
-
-
-    if (!q1) {
-
-        alert("Please answer Question 1.");
-
-        return;
-    }
-
-
-    if (q2.length === 0) {
-
-        alert("Please answer Question 2.");
-
-        return;
-    }
-
-
-    if (!q3 || !q4 || !q5) {
-
-        alert("Please complete all written questions.");
-
-        return;
-    }
-
-
-    const formData = new FormData();
-
-    formData.append(
-        "access_key",
-        ACCESS_KEY
-    );
-
-    formData.append(
-        "subject",
-        "New Learning Environment Activity Response"
-    );
-
-    formData.append(
-        "Student Name",
-        studentName
-    );
-
-    formData.append(
-        "Question 1",
-        q1.value
-    );
-
-    formData.append(
-        "Question 2",
-        Array.from(q2)
-            .map(x => x.value)
-            .join(", ")
-    );
-
-    formData.append(
-        "Question 3",
-        q3
-    );
-
-    formData.append(
-        "Question 4",
-        q4
-    );
-
-    formData.append(
-        "Question 5",
-        q5
-    );
-
-
-    fetch(
-        WEB3FORMS_URL,
-        {
-            method: "POST",
-            body: formData
-        }
-    )
-
-    .then(
-        response => response.json()
-    )
-
-    .then(
-        data => {
-
-            if (data.success) {
-
-                document.getElementById(
-                    "result"
-                ).style.display = "block";
-
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: "smooth"
-                });
-
-            } else {
-
-                alert(
-                    "There was a problem submitting your answers. Please try again."
-                );
-
-                console.error(data);
-            }
-
-        }
-    )
-
-    .catch(
-        error => {
-
-            alert(
-                "There was a problem submitting your answers. Please try again."
-            );
-
-            console.error(error);
-
-        }
-    );
-
-}
-
-</script>
-
-</body>
-</html>
 ```
